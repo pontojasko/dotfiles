@@ -1,9 +1,9 @@
 * {
-  border: none;
-  border-radius: 0;
-  font-family: "JetBrains Mono", "Fira Code", monospace;
-  font-size: 8px;
-  min-height: 0;
+border: none;
+border-radius: 0;
+font-family: "JetBrains Mono", "Fira Code", monospace;
+font-size: 8px;
+min-height: 0;
 }
 
 window#waybar {
@@ -12,66 +12,100 @@ window#waybar {
 }
 
 #workspaces {
-  margin: 0;
-  padding: 0;
+margin: 0;
+padding: 0;
 }
 
 #workspaces button {
-  padding: 0 8px;
-  background-color: transparent;
-  color: #808080;
-  border-bottom: 2px solid transparent;
+padding: 0 8px;
+background-color: transparent;
+color: #808080;
+border-bottom: 2px solid transparent;
 }
 
 #workspaces button.active {
-  color: #ffffff;
-  border-bottom: 2px solid #ffffff;
+color: #ffffff;
+border-bottom: 2px solid #ffffff;
 }
 
 #workspaces button:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+background-color: rgba(255, 255, 255, 0.05);
+color: #ffffff;
 }
 
+/* Modificação aqui: Adicionei #custom-lyrics para aplicar o padding padrão */
 #clock,
 #cpu,
 #memory,
 #pulseaudio,
-#battery {
-  padding: 0 10px;
-  color: #c0c0c0;
-  background-color: transparent;
+#battery,
+#custom-lyrics {
+padding: 0 10px;
+color: #c0c0c0;
+background-color: transparent;
 }
 
 #cpu {
-  color: #a0a0a0;
+color: #a0a0a0;
 }
 
 #memory {
-  color: #a0a0a0;
+color: #a0a0a0;
 }
 
 #pulseaudio {
-  color: #b0b0b0;
+color: #b0b0b0;
 }
 
 #pulseaudio:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+background-color: rgba(255, 255, 255, 0.05);
 }
 
 #battery {
-  color: #b0b0b0;
+color: #b0b0b0;
 }
 
 #battery.warning {
-  color: #f0ad4e;
+color: #f0ad4e;
 }
 
 #battery.critical {
-  color: #d9534f;
+color: #d9534f;
 }
 
+/* Estilo do relógio (Visível quando a música está parada/pausada) */
 #clock {
-  font-weight: 500;
-  color: #ffffff;
+font-weight: 500;
+color: #b0b0b0;
+}
+
+/* Novo Bloco: Estilo do módulo de Letras (Visível quando a música está tocando) */
+#custom-lyrics {
+ /* Mesma fonte do relógio para transição suave */
+color: #ffffff;
+}
+
+/* Estilo para o módulo de letras quando estiver PAUSADO */
+#custom-lyrics.paused {
+/* Define a cor do texto para laranja, por exemplo */
+color: #b0b0b0;
+
+/* Opcional: define uma cor de fundo para destaque */
+/*background-color: rgba(255, 152, 0, 0.2); */
+}
+
+#image#album-art {
+/* O valor 3px de margin-top geralmente alinha imagens pequenas (12px)
+ *      com texto de 8px em uma Waybar de 20px de altura. */
+margin-top: 3px;
+margin-bottom: 5px; /* (3 + 12 + 5 = 20px) */
+
+/* Para garantir que não haja padding extra desnecessário */
+padding: 0px;
+
+/* Espaçamento entre a capa e o texto */
+margin-right: 8px;
+
+/* Deixe a capa com as bordas quadradas para combinar com o texto */
+border-radius: 0;
 }

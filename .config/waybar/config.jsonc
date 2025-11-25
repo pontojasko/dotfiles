@@ -1,12 +1,12 @@
 {
   "layer": "top",
   "position": "bottom",
-  "height": 14,
+  "height": 20,
   "spacing": 0,
-  
+
   "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": ["cpu", "memory", "pulseaudio", "battery"],
+  "modules-center": ["image#album-art", "custom/lyrics", "clock"],
+  "modules-right": ["cpu", "memory", "pulseaudio", "backlight"],
 
   "hyprland/workspaces": {
     "format": "{id}",
@@ -16,13 +16,63 @@
     }
   },
 
+  "image#album-art": {
+        "exec": "$HOME/.config/waybar/albumart.sh",
+        "size": 12, // Tamanho do quadrado da capa (ajuste conforme a altura da sua Waybar)
+        "interval": 2, // Frequência de atualização (em segundos)
+        "tooltip": false,
+        "on-click": "playerctl play-pause" // Opcional: clique para play/pause
+    },
+
   "clock": {
+
     "interval": 60,
-    "format": "{:%H:%M   %d/%m}",
-    "format-alt": "{:%A, %d de %B de %Y}",
+
+    "format": "{:%H:%M}",
+
+    "format-alt": "{:L%A, %d de %B de %Y}",
+
     "tooltip-format": "{:%H:%M:%S\n%d/%m/%Y}",
-    "locale": "pt_PT.utf8"
+
+    "locale": "pt_BR.utf8"
+
   },
+
+
+
+
+"custom/lyrics": {
+    "return-type": "json",
+    // Use "{icon}" aqui para exibir o ícone
+    "format": "{}",
+    // Mapeamento dos ícones e formato baseados no estado (alt)
+    "format-alt": {
+        // Quando estiver tocando e obtendo dados (mostra ícone de download/loading)
+        "getting": "{icon} {text}",
+        // Quando estiver tocando, mas sem letra (mostra ícone de 'sem letra')
+        "no_lyric": "{icon} {text}",
+        // Quando a letra está sendo exibida (pode usar um formato diferente se quiser)
+        "lyric": "{icon} {text}",
+        // Estado padrão (tocando)
+        "playing": "{icon} {text}",
+        // Se o player estiver pausado
+        "paused": " Pausado",
+    },
+    // Definindo os ícones que serão usados no "format-alt"
+    "format-icons": {
+        "playing": "", // Seu ícone de play
+        "paused": "",  // Seu ícone de pause
+        "lyric": "",   // Seu ícone de lyric
+        "no_lyric": "", // Seu ícone de 'sem letra'
+        "getting": "", // Seu ícone de 'obtendo'
+    },
+
+    // As outras configurações estão boas
+    "hide-empty-text": true,
+    "exec-if": "which waybar-lyric",
+    "exec": "waybar-lyric --quiet",
+    "on-click": "waybar-lyric play-pause",
+},
 
   "cpu": {
     "interval": 2,
@@ -40,8 +90,22 @@
     "format": "VOL {volume}%",
     "format-muted": "VOL MUTE",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "tooltip": false
+  "tooltip": false
   },
+
+
+"backlight": {
+    // Tente o nome de fallback
+    "device": "acpi_video0",
+    "format": "BRILHO {percent}%",
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "min-value": 0,
+    "max-value": 100
+},
+
 
   "battery": {
     "interval": 10,

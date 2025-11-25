@@ -24,6 +24,7 @@ style = "Medium"
 # Valores comuns: "full" (padrão), "none", "buttonless".
 decorations = "none"
 
+
 # Remove o aviso "Unused config key: dynamic_padding".
 dynamic_padding = true
 
@@ -32,7 +33,7 @@ dynamic_title = true
 
 # Remove o aviso "Unused config key: opacity".
 # Nota: opacity = 1.0 é totalmente sólido. Se você queria transparência, use 0.9.
-opacity = 1.0 
+opacity = 0.9 
 
 [window.class]
 general = "Alacritty"
