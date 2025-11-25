@@ -1,0 +1,76 @@
+
+[cursor]
+style = "Underline"
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "CaskaydiaCove Nerd Font Mono"
+
+[font.italic]
+family = "CaskaydiaCove Nerd Font Mono"
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font Mono"
+style = "Medium"
+
+# =================================================================
+# Seção [window] (Janela)
+# As chaves de nível superior da janela foram movidas para esta seção
+# =================================================================
+[window]
+# Remove o aviso "Unused config key: decorations" e define a aparência da janela.
+# Valores comuns: "full" (padrão), "none", "buttonless".
+decorations = "none"
+
+# Remove o aviso "Unused config key: dynamic_padding".
+dynamic_padding = true
+
+# Remove o aviso "Unused config key: dynamic_title".
+dynamic_title = true
+
+# Remove o aviso "Unused config key: opacity".
+# Nota: opacity = 1.0 é totalmente sólido. Se você queria transparência, use 0.9.
+opacity = 1.0 
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+# 'decorations' e 'dynamic_padding' foram movidos para a seção [window] acima.
+# Apenas o preenchimento (padding) deve ficar aqui.
+x = 15
+y = 15
+
+# =================================================================
+# Seção [colors] (Cores)
+# Esta seção substitui a seção obsoleta [schemes], resolvendo o aviso.
+# =================================================================
+[colors.primary]
+# Cores primárias de fundo e texto
+background = "0x1C1817"
+foreground = "0xd4be98"
+
+[colors.normal]
+# Cores usadas para os 8 tons "normais"
+black = "0x1C1817"
+red = "0xcc241d"
+green = "0x98971a"
+yellow = "0xd79921"
+blue = "0x076678"
+magenta = "0xb16286"
+cyan = "0x427b58"
+white = "0xfbf1c7"
+
+[colors.bright]
+# Cores usadas para os 8 tons "brilhantes" (Bold/Negrito)
+black = "0x32302f"
+red = "0xea6962"
+green = "0xa9b665"
+yellow = "0xd8a657"
+blue = "0x7daea3"
+magenta = "0xd3869b"
+cyan = "0x89b482"
+white = "0xd4be98"

@@ -1,0 +1,57 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 14,
+  "spacing": 0,
+  
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["cpu", "memory", "pulseaudio", "battery"],
+
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+
+  "clock": {
+    "interval": 60,
+    "format": "{:%H:%M   %d/%m}",
+    "format-alt": "{:%A, %d de %B de %Y}",
+    "tooltip-format": "{:%H:%M:%S\n%d/%m/%Y}",
+    "locale": "pt_PT.utf8"
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "CPU {usage}%",
+    "tooltip": false
+  },
+
+  "memory": {
+    "interval": 2,
+    "format": "RAM {percentage}%",
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "format": "VOL {volume}%",
+    "format-muted": "VOL MUTE",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false
+  },
+
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "BAT {capacity}%",
+    "format-charging": "BAT {capacity}% ⚡",
+    "format-plugged": "BAT {capacity}% ⚡",
+    "tooltip": false
+  }
+}

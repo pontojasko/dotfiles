@@ -1,0 +1,77 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 8px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: rgba(30, 30, 30, 0.85);
+  color: #c0c0c0;
+}
+
+#workspaces {
+  margin: 0;
+  padding: 0;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  background-color: transparent;
+  color: #808080;
+  border-bottom: 2px solid transparent;
+}
+
+#workspaces button.active {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+#workspaces button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#battery {
+  padding: 0 10px;
+  color: #c0c0c0;
+  background-color: transparent;
+}
+
+#cpu {
+  color: #a0a0a0;
+}
+
+#memory {
+  color: #a0a0a0;
+}
+
+#pulseaudio {
+  color: #b0b0b0;
+}
+
+#pulseaudio:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+#battery {
+  color: #b0b0b0;
+}
+
+#battery.warning {
+  color: #f0ad4e;
+}
+
+#battery.critical {
+  color: #d9534f;
+}
+
+#clock {
+  font-weight: 500;
+  color: #ffffff;
+}

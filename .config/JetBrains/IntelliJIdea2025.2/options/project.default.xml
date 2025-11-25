@@ -1,0 +1,22 @@
+<application>
+  <component name="ProjectManager">
+    <defaultProject>
+      <component name="KubernetesApiProvider"><![CDATA[{}]]></component>
+      <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+      <component name="WindowStateProjectService">
+        <state x="469" y="94" key="SettingsEditor" timestamp="1763758669321">
+          <screen x="0" y="0" width="1920" height="1050" />
+        </state>
+        <state x="469" y="94" key="SettingsEditor/0.0.1920.1050" timestamp="1763758669321" />
+        <state x="560" y="152" width="800" height="612" key="new project wizard" timestamp="1763761684808">
+          <screen x="0" y="0" width="1920" height="1050" />
+        </state>
+        <state x="560" y="152" width="800" height="612" key="new project wizard/0.0.1920.1050" timestamp="1763761684808" />
+      </component>
+    </defaultProject>
+  </component>
+</application>
