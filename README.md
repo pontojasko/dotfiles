@@ -1,4 +1,4 @@
-# my boring gruv hyprland dots
+# my borin gruv hyprland dots
 
 <div style="background-color: #232136; border-left: 5px solid rgb(111, 142, 235); padding: 1em; margin-bottom: 1em; color: #e0def4;">
   <p>i realized that making my own dotfiles is easier . so i made it </p>
