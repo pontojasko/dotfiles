@@ -12,7 +12,8 @@
 
 - hyper-minimal waybar  
 - happy background  
-- productive keybindings and workspace setup  
+- productive keybindings and workspace setup
+- fonts: inter variable & caskaydiacove
 
 ---
 
