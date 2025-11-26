@@ -1,130 +1,98 @@
-# My Boring Hyprland Setup
+# my boring gruv hyprland dots
 
-<div align="center" style="background-color: #232136; border-left: 5px solid rgb(111, 142, 235); padding: 1em; margin-bottom: 1em; color: #e0def4;">
-  <h2 style="color: rgb(185, 242, 255);">Hello and Welcome to my Hyprland Setup!</h2>
-  <p>I hope you find it useful and enjoyable.</p>
-  <p>It was my first time configuring a Hyprland setup and I decid to do a focus-oriented and minimalist Hyprland configuration to increase my proditivity</p>
-
-  <p style="color: #f6c177;">
-    ❗I am always open to suggestions and feedback
-    
-  </p>
+<div style="background-color: #232136; border-left: 5px solid rgb(111, 142, 235); padding: 1em; margin-bottom: 1em; color: #e0def4;">
+  <p>i realized that making my own dotfiles is easier . so i made it </p>
+  
+  <p>a lazy fork from <a href="https://github.com/husamuel/hyprland-configs">husamuel</a></p>
 </div>
 
-<img src="https://i.ibb.co/hFgLhjQm/screenshot-2025-11-25-16-46-45.png" />
+![Screenshot](https://i.postimg.cc/BSqPMd70/screenshot-2025-11-25-16-46-45.png)
 
+## features
 
----
-
-## Features
-
-- Hyper-minimal Waybar  
-- Clean and distraction-free background  
-- Custom lockscreen (swaylock)  
-- Minimal Dunst notifications  
-- Productive keybindings and workspace setup  
+- hyper-minimal waybar  
+- happy background  
+- productive keybindings and workspace setup  
 
 ---
 
-## Installation
+## installation
 
-1. **Clone this repository**:
-
-```bash
-git clone https://github.com/husamuel/hyprland-configs.git
-cd hyprland-configs
-```
-2. **Copy the configuration files to your home directory**:
-```bash
-# Hyprland
-mkdir -p ~/.config/hypr
-cp -r hypr/* ~/.config/hypr/
-
-# Waybar
-mkdir -p ~/.config/waybar
-cp -r waybar/* ~/.config/waybar/
-
-# Dunst
-mkdir -p ~/.config/dunst
-cp -r dunst/* ~/.config/dunst/
-
-# Swaylock
-mkdir -p ~/.config/swaylock
-cp -r swaylock/* ~/.config/swaylock/
-
-# Assets (wallpapers)
-mkdir -p ~/.config/assets/backgrounds
-cp -r assets/* ~/.config/assets/
-
-```
-3. **Install required programs:**
-
-- Hyprland
-- Wofi
-- Alacritty
-- Thunar (or your preferred file manager)
-- Vivaldi (or your preferred browser)
-- Obsidian
-- Thunderbird
-- Dunst
-- Waybar
+1. **clone this repository**:
 
 ```bash
-sudo pacman -S --needed hyprland wofi alacritty thunar vivaldi-bin obsidian-bin thunderbird dunst waybar
+git clone https://github.com/pontojasko/dotfiles.git
+cd dotfiles
 ```
+2. **copy the configuration files to your home directory**:
+```bash
+drag and drop everything in .config folder
 
-4. **Start Hyprland:**
+```
+3. **install required programs:**
+
+- hyprland
+- wofi
+- alacritty
+- dunst
+- waybar
 
 ```bash
-Hyprland
+sudo pacman -s --needed hyprland wofi alacritty dunst waybar
 ```
 
-## How to Use
+4. **start hyprland:**
 
-Here are the main shortcuts and commands from the Hyprland configuration:
+```bash
+hyprland
+```
 
-### Terminal & Applications
-- `$mainMod + Return` → Open terminal (Alacritty)  
-- `$mainMod + D` → Open application launcher (Wofi)  
-- `$mainMod + B` → Open browser (Vivaldi)  
-- `$mainMod + O` → Open Obsidian  
-- `$mainMod + M` → Open email (Thunderbird)  
-- `$mainMod + E` → Open file manager (Thunar)  
+## how to use
 
-### Window Management
-- `$mainMod + H / L / K / J` → Move focus (vim-style)  
-- `$mainMod + Shift + H / L / K / J` → Move active window  
-- `$mainMod + Ctrl + H / L / K / J` → Resize active window  
+here are the main shortcuts and commands from the hyprland configuration:
 
-### Workspace Management
-- `$mainMod + [1-0]` → Switch workspace  
-- `$mainMod + Shift + [1-0]` → Move window to workspace  
-- `$mainMod + Left / Right` → Switch workspace left/right  
-- `$mainMod + Mouse Up / Down` → Scroll through workspaces  
+### terminal & applications
+- `$mainmod + return` → open terminal (alacritty)  
+- `$mainmod + d` → open application launcher (wofi)  
+- `$mainmod + b` → open browser (vivaldi)  
+- `$mainmod + o` → open obsidian  
+- `$mainmod + m` → open email (thunderbird)  
+- `$mainmod + e` → open file manager (thunar)  
 
-### Special Workspaces
-- `$mainMod + S` → Toggle special workspace “magic”  
-- `$mainMod + Shift + S` → Move window to special workspace  
+### window management
+- `$mainmod + h / l / k / j` → move focus (vim-style)  
+- `$mainmod + shift + h / l / k / j` → move active window  
+- `$mainmod + ctrl + h / l / k / j` → resize active window  
 
-### Floating & Pseudo-Tiling
-- `$mainMod + V` → Toggle floating  
-- `$mainMod + P` → Toggle pseudo-tiling  
-- `$mainMod + J` → Toggle split orientation  
+### workspace management
+- `$mainmod + [1-0]` → switch workspace  
+- `$mainmod + shift + [1-0]` → move window to workspace  
+- `$mainmod + left / right` → switch workspace left/right  
+- `$mainmod + mouse up / down` → scroll through workspaces  
 
-### Screenshots
-- `Print` → Full screenshot  
-- `Shift + Print` → Area screenshot  
-- `$mainMod + Print` → Window screenshot  
+### special workspaces
+- `$mainmod + s` → toggle special workspace “magic”  
+- `$mainmod + shift + s` → move window to special workspace  
 
-### Media & Brightness
-- `$mainMod + F11 / F10` → Volume up / down  
-- `$mainMod + Shift + = / -` → Brightness up / down  
+### floating & pseudo-tiling
+- `$mainmod + v` → toggle floating  
+- `$mainmod + p` → toggle pseudo-tiling  
+- `$mainmod + j` → toggle split orientation  
 
-### Lock Screen
-- `$mainMod + Escape` → Lock screen (swaylock with custom theme)  
+### screenshots
+- `print` → full screenshot  
+- `shift + print` → area screenshot  
+- `$mainmod + print` → window screenshot  
+
+### media & brightness
+- `$mainmod + f11 / f10` → volume up / down  
+- `$mainmod + shift + = / -` → brightness up / down  
+
+### lock screen
+- `$mainmod + escape` → lock screen (swaylock with custom theme)  
 
 ---
 
-## 📜 License
+## 📜 license
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+this project is licensed under the mit license - see the [license](license) file for details.
