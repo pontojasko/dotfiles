@@ -1,98 +1,115 @@
-;; VariÃ¡veis que serÃ£o atualizadas
-(defpoll music_info :interval "1s"
-  "scripts/music-info.sh")
+;; Variáveis
+;; Poll para pegar os dados do script a cada 1 segundo
+(defpoll spotify_data :interval "1s" "scripts/spotify.sh get")
 
-(defpoll album_art :interval "2s"
-  "scripts/album-art.sh")
-
-(defpoll player_status :interval "1s"
-  "playerctl status 2>/dev/null || echo 'Paused'")
-
-(defpoll position :interval "500ms"
-  :run-while {! is_seeking}
-  "playerctl position 2>/dev/null || echo '0'")
-
-(defpoll duration :interval "1s"
-  "playerctl metadata mpris:length 2>/dev/null | awk '{print $1/1000000}' || echo '0'")
-
-(defpoll volume :interval "1s"
-  "playerctl volume 2>/dev/null | awk '{printf \"%.0f\", $1 * 100}' || echo '50'")
-
-;; VariÃ¡vel para controlar se estÃ¡ arrastando
-(defvar is_seeking false)
-(defvar seek_position 0)
-
-;; Janela do player
-(defwindow music_player
+;; Janela Principal
+(defwindow spotify_control
   :monitor 0
-  :geometry (geometry
-    :x "10px"
-    :y "10px"
-    :anchor "bottom center")
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "100%"
+                      :anchor "center bottom")
   :stacking "overlay"
-  :windowtype "normal"
-  :wm-ignore false
+  :exclusive false
+  :focusable true  ;; Necessário para detectar teclas como ESC, se configurado
+  (closer_overlay))
 
-  (box :class "player-container"
-       :orientation "v"
-       :space-evenly false
+;; Widget que cobre a tela inteira para detectar clique fora
+(defwidget closer_overlay []
+  (eventbox :onclick "eww close spotify_control"
+            :class "closer-overlay"
+    (box :class "layout-box"
+         :valign "end"
+         :halign "center"
+         ;; O widget real fica aqui dentro, alinhado ao centro inferior
+         (spotify_widget))))
 
-    ;; Capa do Ã¡lbum
-    (box :class "album-art-container"
-         :style "background-image: url('${album_art}');")
+;; O Widget do Player em si
+(defwidget spotify_widget []
+  (eventbox :onclick "" ;; Impede que cliques no player fechem a janela
+    (box :class "player-container"
 
-    ;; InformaÃ§Ãµes da mÃºsica
-    (box :class "music-info"
          :orientation "v"
+          :style "border: 3px solid ${spotify_data.accent_color ?: '#3c3836'};"
          :space-evenly false
-      (label :class "song-title"
-             :text "${music_info.title}"
-             :limit-width 35)
-      (label :class "song-artist"
-             :text "${music_info.artist}"
-             :limit-width 35))
+         :width 300 ;; Largura fixa para manter o estilo boxy
 
-    ;; Barra de progresso
-    (box :class "progress-container"
-         :orientation "v"
-         :space-evenly false
-      (scale :class "progress-bar"
-             :value {is_seeking ? seek_position : position}
-             :min 0
-             :max duration
-             :onchange "eww update seek_position={}"
-             :onclick "eww update is_seeking=true"
-             :onrelease "eww update is_seeking=false && playerctl position {}")
-      (box :class "time-labels"
+      ;; Capa do Álbum
+
+(eventbox :onclick "hyprctl dispatch workspace 3 && hyprctl dispatch focuswindow class:Spotify"
+                :cursor "pointer"
+      (box :class "album-art-container"
+           :style "background-image: url('${spotify_data.art}');"
+           :height 300 ;; Altura quadrada para a arte
+      ))
+
+      ;; Título e Artista
+(eventbox :onclick "hyprctl dispatch workspace 3 && hyprctl dispatch focuswindow class:Spotify"
+                :cursor "pointer"
+        (box :class "music-info"
+             :orientation "v"
+             :space-evenly false
+
+  ;; NOVO: Caixa com recorte para a rolagem
+  (box :width 280 :clip true :halign "center"
+    (label :class "song-title marquee"
+           :text "${spotify_data.title}"
+           :limit-width 20)
+  )
+
+  (label :class "song-artist"
+         :text "${spotify_data.artist}"
+         :limit-width 30)
+)
+)
+
+      ;; Barra de Progresso
+      (box :class "progress-container"
+           :orientation "v"
+           :space-evenly false
+        (scale :class "progress-bar"
+               :min 0
+               :max 100
+               :value {spotify_data.percent ?: 0}
+               :orientation "h"
+               ;; Arrastar a barra busca a posição (calculo reverso feito inline ou no script se preferir)
+               :onchange "playerctl -p spotify position $(awk -v p={} -v l=${spotify_data.length} 'BEGIN {print l * p / 100}')")
+
+        (box :class "time-labels"
+             :orientation "h"
+             :halign "fill"
+          (label :halign "start" :text "${spotify_data.pos_str}")
+          (label :halign "end"   :text "${spotify_data.len_str}")
+        )
+      )
+
+
+
+      ;; Controles de Mídia
+      (box :class "controls"
+           :orientation "h"
+           :halign "center"
            :space-evenly true
-        (label :class "time-current"
-               :text "${round(is_seeking ? seek_position : position, 0)} s"
-               :halign "start")
-        (label :class "time-total"
-               :text "${round(duration, 0)} s"
-               :halign "end")))
+           :spacing 20
+        (button :class "control-btn" :onclick "playerctl -p spotify previous" "⏮")
+        (button :class "control-btn play-pause" :onclick "playerctl -p spotify play-pause" "${spotify_data.icon}")
+        (button :class "control-btn" :onclick "playerctl -p spotify next" "⏭")
+      )
 
-    ;; Controles
-    (box :class "controls"
-     :space-evenly true
-     :halign "center"
-     (button :class "control-btn"
-             :onclick "playerctl previous"
-             "") ; Ícone FA de 'Previous' (<-)
-     (button :class "control-btn play-pause"
-             :onclick "playerctl play-pause"
-             "${player_status == 'Playing' ? '' : ''}") ; 'Pause' () ou 'Play' ()
-     (button :class "control-btn"
-             :onclick "playerctl next"
-             "")) ; Ícone FA de 'Next' (->)
-
-    ;; Volume
-    (box :class "volume-container"
-         :space-evenly false
-      (label :class "volume-icon"
-             :text "")
-      (scale :class "volume-bar"
-             :value volume
-             :min 0
-             :max 100
-             :onchange "playerctl volume $(echo {}/100 | bc -l)")))  )
+      ;; Volume Específico do Spotify
+      (box :class "volume-container"
+           :orientation "h"
+           :space-evenly false
+           :spacing 10
+        (label :text "VOL" :style "font-weight: bold; font-size: 12px;")
+        (scale :class "volume-bar"
+               :min 0
+               :max 100
+               :value {spotify_data.vol ?: 0}
+               :orientation "h"
+               :onchange "scripts/spotify.sh vol {}")
+      )
+    )
+  )
+)

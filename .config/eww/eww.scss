@@ -1,8 +1,7 @@
-
-
+// --- Variáveis Gruvbox ---
 $bg0: #282828;
-$bg1: #282828;
-$bg2: #3c3836;
+$bg1: #3c3836; // Ligeiramente mais claro para contraste
+$bg2: #504945;
 $fg: #ebdbb2;
 $red: #fb4934;
 $green: #98971a;
@@ -11,7 +10,7 @@ $yellow: #fabd2f;
 $blue: #83a598;
 $purple: #d3869b;
 $aqua: #8ec07c;
-$orange: #d79921;
+$orange: #fe8019;
 
 * {
   all: unset;
@@ -19,60 +18,76 @@ $orange: #d79921;
   font-size: 14px;
 }
 
-.player-wrapper {
-  min-width: 500px;
-  min-height: 500px;
-  background-color: transparent;
+// Overlay transparente para detectar clique fora
+.closer-overlay {
+  background-color: rgba(0, 0, 0, 0); // Levemente escuro para dar foco
 }
 
+// Container principal do Player
 .player-container {
   background-color: $bg0;
-  border: 1px solid $deadyellow;
-  border-radius: 0;
+
+  border-radius: 0; // Boxy
   padding: 0;
+  margin-bottom: 20px; // Espaço da borda inferior da tela
 }
 
 .album-art-container {
-  min-width: 250px;
-  min-height: 250px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 0px 0px 0px 0px;
-  background-color: $bg1;
+  border-bottom: 2px solid $bg0;
+  background-color: $bg1; // Cor de fundo se não houver capa
+  border-radius: 0;
 }
 
 .music-info {
-  padding-top: 15px;
-  padding-bottom: 5px;
-  background-color: $bg1;
+  padding: 15px 10px;
+  background-color: $bg0;
 
-}
 
-.song-title {
-  color: $fg;
-  font-size: 16px;
-  font-weight: bold;
-}
 
-.song-artist {
-  color: $aqua;
-  font-size: 13px;
+
+  .song-title {
+    color: $fg;
+    font-size: 16px;
+    font-weight: bold;
+
+
+
+  }
+
+  .song-artist {
+    color: $aqua;
+    font-size: 13px;
+    margin-top: 5px;
+
+
+
+  }
+
+
+
+
 }
 
 .progress-container {
-  padding: 10px 15px;
+  padding: 5px 20px;
   background-color: $bg0;
 
+  .time-labels {
+    color: $fg;
+    font-size: 11px;
+    margin-top: 5px;
+  }
 }
 
 .progress-bar {
-  min-height: 8px;
-  background-color: $bg2;
-  border-radius: 0;
+  background-color: transparent;
 
   trough {
     min-height: 8px;
+    min-width: 10px;
     background-color: $bg2;
     border-radius: 0;
   }
@@ -83,67 +98,60 @@ $orange: #d79921;
   }
 
   slider {
-    min-width: 0;
-    min-height: 0;
-    background-color: transparent;
+    min-width: 12px;
+    min-height: 12px;
+    background-color: $fg; // Slider visível para facilitar arrastar
+    border-radius: 0;
+    margin: -2px 0;
   }
-}
-
-.time-labels {
-  color: $fg;
-  font-size: 11px;
-  margin-top: 3px;
 }
 
 .controls {
   padding: 15px;
   background-color: $bg0;
-
 }
 
 .control-btn {
   font-size: 24px;
   color: $fg;
-  padding: 8px 15px;
-  background-color: $bg1;
+  padding: 5px 15px;
+  background-color: transparent;
   border-radius: 0;
   transition: all 0.2s;
 
   &:hover {
-    background-color: $bg2;
-    color: $orange;
+    color: $yellow;
+    background-color: $bg1;
   }
 
   &.play-pause {
-    background-color: $orange;
-    color: $bg0;
-    font-size: 28px;
+    color: $orange;
+    font-size: 32px;
 
     &:hover {
-      background-color: $yellow;
+      color: $fg;
+      background-color: $orange;
     }
   }
 }
 
 .volume-container {
-  padding: 10px 15px 15px 15px;
+  padding: 10px 20px 20px 20px;
   background-color: $bg0;
 
-  border-radius: 0 0 0px 0px;
+  label {
+    color: $bg2;
+  }
 }
 
-
-
 .volume-bar {
-  min-width: 220px;
-  min-height: 0px;
-  background-color: $bg2;
-  border-radius: 0;
+  background-color: transparent;
 
   trough {
     min-height: 6px;
+    min-width: 200px; // Garante largura mínima
     background-color: $bg2;
-    border-radius: 0px;
+    border-radius: 0;
   }
 
   highlight {
@@ -152,8 +160,13 @@ $orange: #d79921;
   }
 
   slider {
-    min-width: 0;
-    min-height: 0;
-    background-color: transparent;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: $fg;
+    border-radius: 0;
+    margin: -2px 0;
   }
+
+
+
 }

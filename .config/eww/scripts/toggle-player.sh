@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if eww active-windows | grep -q "music_player"; then
-    eww close music_player
+    eww close spotify_control
 else
-    eww open music_player
+    eww open spotify_control
 fi
