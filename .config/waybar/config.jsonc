@@ -21,7 +21,7 @@
         "size": 12, // Tamanho do quadrado da capa (ajuste conforme a altura da sua Waybar)
         "interval": 2, // Frequência de atualização (em segundos)
         "tooltip": false,
-        "on-click": "playerctl play-pause" // Opcional: clique para play/pause
+        "on-click": "playerctl -spotify play-pause" // Opcional: clique para play/pause
     },
 
   "clock": {
@@ -67,11 +67,11 @@
         "getting": "", // Seu ícone de 'obtendo'
     },
 
-    // As outras configurações estão boas
+
     "hide-empty-text": true,
     "exec-if": "which waybar-lyric",
     "exec": "waybar-lyric --quiet",
-    "on-click": "waybar-lyric play-pause",
+    "on-click": "~/.config/eww/scripts/toggle-player.sh",
 },
 
   "cpu": {
