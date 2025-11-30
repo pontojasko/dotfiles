@@ -27,19 +27,22 @@ cd dotfiles
 ```
 2. **copy the configuration files to your home directory**:
 ```bash
-drag and drop everything in .config folder
+
+cp -r .config/* ~/.config/
 
 ```
 3. **install required programs:**
 
-- hyprland
-- wofi
-- alacritty
-- dunst
-- waybar
+core: hyprland, waybar, dunst, wofi, swww, hypridle
+
+tools: grim & slurp (screenshots), wl-clipboard, cliphist, brightnessctl, ddcutil, playerctl
+
+apps: alacritty, dolphin, brave
 
 ```bash
-sudo pacman -s --needed hyprland wofi alacritty dunst waybar
+sudo pacman -S --needed hyprland hypridle waybar dunst wofi grim slurp wl-clipboard cliphist brightnessctl playerctl alacritty dolphin brave 
+# You might need AUR helpers (yay/paru) for: swww, bibata-cursor-theme
+
 ```
 
 4. **start hyprland:**
