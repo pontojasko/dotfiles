@@ -71,6 +71,8 @@ $orange: #fe8019;
 
 }
 
+
+
 .progress-container {
   padding: 5px 20px;
   background-color: $bg0;
@@ -133,6 +135,14 @@ $orange: #fe8019;
       background-color: $orange;
     }
   }
+}
+
+
+
+/* Opcional: Efeito visual no box .music-info */
+.music-clickable:hover .song-title {
+  color: $orange;
+  transition: background-color 0.2s;
 }
 
 .volume-container {

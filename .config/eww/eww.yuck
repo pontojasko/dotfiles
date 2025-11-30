@@ -17,7 +17,7 @@
 
 ;; Widget que cobre a tela inteira para detectar clique fora
 (defwidget closer_overlay []
-  (eventbox :onclick "eww close spotify_control"
+  (eventbox :onclick "eww close spotify_control && hyprctl dispatch submap reset"
             :class "closer-overlay"
     (box :class "layout-box"
          :valign "end"
@@ -47,6 +47,7 @@
       ;; Título e Artista
 (eventbox :onclick "hyprctl dispatch workspace 3 && hyprctl dispatch focuswindow class:Spotify"
                 :cursor "pointer"
+                :class "music-clickable"
         (box :class "music-info"
              :orientation "v"
              :space-evenly false
@@ -83,6 +84,7 @@
           (label :halign "end"   :text "${spotify_data.len_str}")
         )
       )
+
 
 
 

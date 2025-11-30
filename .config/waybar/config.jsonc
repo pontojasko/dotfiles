@@ -6,7 +6,7 @@
 
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["image#album-art", "custom/lyrics", "clock"],
-  "modules-right": ["cpu", "memory", "pulseaudio", "backlight"],
+  "modules-right": ["cpu", "memory", "custom/brightness", "pulseaudio"],
 
   "hyprland/workspaces": {
     "format": "{id}",
@@ -86,6 +86,30 @@
     "tooltip": false
   },
 
+  // --- NOVO MÓDULO DE BRILHO (DDCUTIL) ---
+"custom/brightness": {
+    "format": "BRI {}%",
+    // 1. Tenta ler o arquivo temporário.
+    // 2. Se não existir (primeira vez), pergunta pro monitor e cria o arquivo.
+    "exec": "cat /tmp/w_bri 2>/dev/null || ddcutil getvcp 10 --brief | awk '{print $4}' | tee /tmp/w_bri",
+
+    // Atualiza a cada 1s (é leve pq só lê um arquivo de texto)
+    "interval": 1,
+
+    // Define um sinal para atualização instantânea (sem esperar 1s)
+    "signal": 10,
+
+    // Lógica Scroll CIMA (Tudo em uma linha):
+    // Lê valor -> Soma 10 -> Limita em 100 -> Salva no arquivo -> Atualiza Waybar -> Manda comando pro monitor em background (&)
+    "on-scroll-up": "val=$(cat /tmp/w_bri); new=$((val + 10)); [ $new -gt 100 ] && new=100; echo $new > /tmp/w_bri; pkill -RTMIN+10 waybar; ddcutil setvcp 10 $new &",
+
+    // Lógica Scroll BAIXO:
+    // Lê valor -> Subtrai 10 -> Limita em 0 -> Salva no arquivo -> Atualiza Waybar -> Manda comando pro monitor em background (&)
+    "on-scroll-down": "val=$(cat /tmp/w_bri); new=$((val - 10)); [ $new -lt 0 ] && new=0; echo $new > /tmp/w_bri; pkill -RTMIN+10 waybar; ddcutil setvcp 10 $new &",
+
+    "tooltip": false
+  },
+
   "pulseaudio": {
     "format": "VOL {volume}%",
     "format-muted": "VOL MUTE",
@@ -93,18 +117,6 @@
   "tooltip": false
   },
 
-
-"backlight": {
-    // Tente o nome de fallback
-    "device": "acpi_video0",
-    "format": "BRILHO {percent}%",
-    "format-icons": ["", ""],
-    "tooltip": true,
-    "on-scroll-up": "brightnessctl set +5%",
-    "on-scroll-down": "brightnessctl set 5%-",
-    "min-value": 0,
-    "max-value": 100
-},
 
 
   "battery": {
