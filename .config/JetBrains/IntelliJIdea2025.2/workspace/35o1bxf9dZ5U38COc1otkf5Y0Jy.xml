@@ -16,15 +16,15 @@
             </state>
           </provider>
         </entry>
-        <tab><![CDATA[{"tabTitle":"Main.java","foregroundColor":-3938169,"textAttributes":{"name":"a","children":[{"name":"option","attributes":{"name":"FOREGROUND","value":"c3e887"}}]},"icon":[10,57,99,111,109,46,105,110,116,101,108,108,105,106,46,117,105,46,105,99,111,110,115,46,82,97,115,116,101,114,105,122,101,100,73,109,97,103,101,68,97,116,97,76,111,97,100,101,114,68,101,115,99,114,105,112,116,111,114,18,62,10,15,110,111,100,101,115,47,99,108,97,115,115,46,115,118,103,18,21,101,120,112,117,105,47,110,111,100,101,115,47,99,108,97,115,115,46,115,118,103,26,12,99,111,109,46,105,110,116,101,108,108,105,106,40,-63,-37,-81,-57,4,48,0]}]]></tab>
+        <tab>{&quot;tabTitle&quot;:&quot;Main.java&quot;,&quot;foregroundColor&quot;:-3938169,&quot;textAttributes&quot;:{&quot;name&quot;:&quot;a&quot;,&quot;children&quot;:[{&quot;name&quot;:&quot;option&quot;,&quot;attributes&quot;:{&quot;name&quot;:&quot;FOREGROUND&quot;,&quot;value&quot;:&quot;c3e887&quot;}}]},&quot;icon&quot;:[10,57,99,111,109,46,105,110,116,101,108,108,105,106,46,117,105,46,105,99,111,110,115,46,82,97,115,116,101,114,105,122,101,100,73,109,97,103,101,68,97,116,97,76,111,97,100,101,114,68,101,115,99,114,105,112,116,111,114,18,62,10,15,110,111,100,101,115,47,99,108,97,115,115,46,115,118,103,18,21,101,120,112,117,105,47,110,111,100,101,115,47,99,108,97,115,115,46,115,118,103,26,12,99,111,109,46,105,110,116,101,108,108,105,106,40,-63,-37,-81,-57,4,48,0]}</tab>
       </file>
     </leaf>
   </component>
   <component name="FileTypeUsageLocalSummary"><![CDATA[{
   "data": {
     "JAVA": {
-      "usageCount": 9,
-      "lastUsed": 1764132909570
+      "usageCount": 10,
+      "lastUsed": 1764874589477
     },
     "WebPreview": {
       "usageCount": 7,
@@ -50,7 +50,7 @@
   </component>
   <component name="LanguageUsageStatistics">
     <language id="JAVA">
-      <summary usageCount="9" lastUsage="1764132909573" />
+      <summary usageCount="10" lastUsage="1764874589479" />
     </language>
   </component>
   <component name="ProjectView">
@@ -155,7 +155,7 @@
     </panes>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7363000" />
+    <option name="totallyTimeSpent" value="7375000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -164,7 +164,7 @@
   </component>
   <component name="ToolWindowManager">
     <layoutV2>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14676747" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14661458" />
       <window_info id="Commit" order="1" weight="0.14609376" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" />
@@ -181,7 +181,7 @@
       <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
       <window_info anchor="right" id="ElectroJunToolWindow" order="5" />
-      <unified_weights bottom="0.33158398" left="0.14676747" right="0.2502604" />
+      <unified_weights bottom="0.33158398" left="0.14661458" right="0.2502604" />
     </layoutV2>
     <recentWindows>
       <value>Run</value>

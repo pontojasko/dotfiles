@@ -104,7 +104,7 @@
            :orientation "h"
            :space-evenly false
            :spacing 10
-        (label :text "VOL" :style "font-weight: bold; font-size: 12px;")
+        (label :text "MONO" :style "font-weight: bold; font-size: 12px;")
         (scale :class "volume-bar"
                :min 0
                :max 100

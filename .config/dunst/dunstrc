@@ -1,7 +1,7 @@
 [global]
     # --- Aparência e Geometria ---
     # CORREÇÃO: Sintaxe nova usa vírgula (x, y)
-    origin = top-right
+    origin = bottom-right
     offset = (20, 20)
 
     # Tamanho da notificação
