@@ -6,7 +6,7 @@
 
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["image#album-art", "custom/lyrics", "clock"],
-  "modules-right": ["cpu", "memory", "custom/brightness", "pulseaudio"],
+  "modules-right": ["custom/dnd", "cpu", "memory", "custom/brightness", "pulseaudio"],
 
   "hyprland/workspaces": {
     "format": "{id}",
@@ -117,6 +117,13 @@
   "tooltip": false
   },
 
+"custom/dnd": {
+    "interval": 1,
+    "format": "{}",
+    "exec": "dunstctl is-paused | grep -q 'true' && echo '' || echo ''",
+    "on-click": "dunstctl set-paused toggle",
+    "tooltip": false
+  },
 
 
   "battery": {
