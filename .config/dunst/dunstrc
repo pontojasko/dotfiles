@@ -1,69 +1,52 @@
 [global]
-    # --- Aparência e Geometria ---
-    # CORREÇÃO: Sintaxe nova usa vírgula (x, y)
     origin = bottom-right
-    offset = (20, 20)
-
-    # Tamanho da notificação
-    width = (300, 450)
-
-    # CORREÇÃO: Altura dinâmica (min, max).
-    # (0, 300) significa que ela cresce conforme o texto até 300px.
-    height = (0, 300)
-
-    # Espaçamento
-    gap_size = 8
-    frame_width = 1
-
-    # Quadrado (sem arredondamento)
-    corner_radius = 0
-
-    # --- Fonte e Ícones --- Caskaydia Cove, etc)
     font = CaskaydiaCove Nerd Font Mono 9
-
-    icon_position = left
-    min_icon_size = 48
-    max_icon_size = 48
-    text_icon_padding = 12
-
-    # --- Comportamento ---
-    transparency = 0
-    sort = yes
-    idle_threshold = 120
-    line_height = 0
+    corner_radius = 0;
     markup = full
-    padding = 12
-    horizontal_padding = 12
-    separator_height = 2
+    format = "<b>%s</b>\n%b"
+    sort = yes
+    indicate_hidden = yes
+    alignment = center
+    stack_duplicates = true
+    bounce_freq = 0
     show_age_threshold = 60
     word_wrap = yes
     ignore_newline = no
-    stack_duplicates = true
-    hide_duplicate_count = false
-    show_indicators = yes
+    geometry = "200x5-6+30"
+    browser = /usr/bin/brave -new-tab
+    transparency = 0
+    idle_threshold = 120
+    monitor = 0
+    follow = mouse
+    sticky_history = yes
+    line_height = 0
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 8
+    separator_color = "#585858"
+    startup_notification = false
+    # https://github.com/knopwob/dunst/issues/26#issuecomment-36159395
+    #icon_position = left
+    frame_width = 1
+    frame_color = "#282828"
+    
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
 
-    # Barra de progresso
-    progress_bar = true
-    progress_bar_height = 8
-    progress_bar_frame_width = 0
-    progress_bar_min_width = 150
-    progress_bar_max_width = 300
-
-# --- Cores GRUVBOX ---
 [urgency_low]
-    background = "#282828"
+    background = "#1D282828"
     foreground = "#ebdbb2"
-    frame_color = "#928374"
-    timeout = 4
+    timeout = 5
 
 [urgency_normal]
-    background = "#282828"
+    background = "#1D282828"
     foreground = "#ebdbb2"
-    frame_color = "#d79921"
-    timeout = 6
+    timeout = 10
 
 [urgency_critical]
-    background = "#cc241d"
+    background = "#1D282828"
     foreground = "#ebdbb2"
-    frame_color = "#fb4934"
-    timeout = 0
+    timeout = 20
