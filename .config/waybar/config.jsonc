@@ -110,7 +110,10 @@
   "pulseaudio": {
     "format": "VOL {volume}%",
     "format-muted": "VOL MUTE",
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+     "on-click": "eww open volume_mixer --toggle",
+    
+    // Clique DIREITO: Muta/Desmuta (opcional, mas recomendado)
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
   "tooltip": false
   },
 
