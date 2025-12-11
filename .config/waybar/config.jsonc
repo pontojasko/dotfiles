@@ -6,7 +6,7 @@
 
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["image#album-art", "custom/lyrics", "clock"],
-  "modules-right": ["custom/dnd", "cpu", "memory", "custom/brightness", "pulseaudio"],
+  "modules-right": [ "custom/dnd", "custom/theme", "cpu", "memory", "custom/brightness", "pulseaudio"],
 
   "hyprland/workspaces": {
     "format": "{id}",
@@ -18,7 +18,7 @@
         "size": 12, // Tamanho do quadrado da capa (ajuste conforme a altura da sua Waybar)
         "interval": 2, // Frequência de atualização (em segundos)
         "tooltip": false,
-        "on-click": "~/.config/eww/scripts/toggle-player.sh",
+        "on-click": "~/.config/eww/scripts/toggle-player.sh"
     },
 
   "clock": {
@@ -53,7 +53,7 @@
         // Estado padrão (tocando)
         "playing": "{icon} {text}",
         // Se o player estiver pausado
-        "paused": " Pausado",
+        "paused": " Pausado"
     },
     // Definindo os ícones que serão usados no "format-alt"
     "format-icons": {
@@ -61,14 +61,14 @@
         "paused": "",  // Seu ícone de pause
         "lyric": "",   // Seu ícone de lyric
         "no_lyric": "", // Seu ícone de 'sem letra'
-        "getting": "", // Seu ícone de 'obtendo'
+        "getting": "" // Seu ícone de 'obtendo'
     },
 
 
     "hide-empty-text": true,
     "exec-if": "which waybar-lyric",
     "exec": "waybar-lyric --quiet",
-    "on-click": "~/.config/eww/scripts/toggle-player.sh",
+    "on-click": "~/.config/eww/scripts/toggle-player.sh"
 },
 
   "cpu": {
@@ -107,6 +107,8 @@
     "tooltip": false
   },
 
+
+
   "pulseaudio": {
     "format": "VOL {volume}%",
     "format-muted": "VOL MUTE",
@@ -124,6 +126,14 @@
     "on-click": "dunstctl set-paused toggle",
     "tooltip": false
   },
+
+  "custom/theme": {
+    "format": "{}",
+
+    "exec": "CURRENT_TARGET=$(readlink -f $HOME/.config/waybar/style.css); if [ \"$CURRENT_TARGET\" = \"$HOME/.config/waybar/styledark.css\" ]; then echo ''; else echo ''; fi",
+    "on-click": "$HOME/.config/waybar/toggle-theme.sh &",
+    "interval": 60, // Verifica o estado a cada 60 segundos
+},
 
 
   "battery": {
