@@ -1,0 +1,83 @@
+configuration {
+    /* Combina os modos em uma única lista */
+    modi: "combi";
+    combi-modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    font: "CaskaydiaCove Nerd Font Mono 11";
+    combi-hide-mode-prefix: true;
+    sorting-method: "fzf";
+    max-history-size: 25;
+    
+    /* Configurações de display */
+    display-combi: "";
+    drun-display-format: "{name}"; /* Remove descrições extras para limpar a lista */
+    window-format: "{c}"; /* Mostra apenas a classe da janela */
+}
+
+@theme "/dev/null" /* Reseta o tema padrão para começarmos do zero */
+
+* {
+    /* Paleta Gruvbox Dark */
+    bg:      #282828;
+    fg:      #ebdbb2;
+    accent:  #88671aff; /* Amarelo Gruvbox */
+    select:  #3c3836;
+    
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    width:            450px; /* Quadrado mais estreito */
+    background-color: @bg;
+    border:           1px;
+    border-color:     @accent;
+    border-radius:    0px; /* Totalmente quadrado */
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    padding: 10px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    background-color: @bg;
+}
+
+prompt {
+    padding: 10px;
+    text-color: @accent;
+}
+
+entry {
+    padding: 10px;
+    placeholder: "";
+    placeholder-color: #7c6f64;
+}
+
+listview {
+    lines: 10;
+    columns: 1;
+    scrollbar: false;
+    fixed-height: false;
+}
+
+element {
+    padding: 8px;
+    spacing: 12px;
+}
+
+element-icon {
+    size: 34px;
+}
+
+element selected {
+    background-color: @select;
+    text-color:       @accent;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
