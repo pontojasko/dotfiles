@@ -184,7 +184,7 @@ colors=()
 sizes=()
 lcolors=()
 
-while [[ $
+while [[ $# -gt 0 ]]; do
     case "${1}" in
         -d | --dest)
             dest="${2}"
