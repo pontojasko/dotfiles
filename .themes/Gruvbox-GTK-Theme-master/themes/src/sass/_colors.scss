@@ -1,5 +1,3 @@
-// When color definition differs for dark and light variant,
-// it gets @if ed depending on $variant
 
 @import 'tweaks-temp';
 
@@ -8,7 +6,7 @@
 }
 
 @function gtkmix($c1,$c2,$r) {
-	$ratio: 1 -  $r / 100%; // match SCSS mix()
+	$ratio: 1 -  $r / 100%;
 	@return unquote("mix(#{$c1},#{$c2},#{$ratio})");
 }
 
@@ -21,11 +19,9 @@
 }
 
 @function on($color, $state: 'primary') {
-	// Allow 'light' or 'dark' to $color
 	@if ($color == 'light') { $color: $white; }
 	@if ($color == 'dark') 	{ $color: $black; }
 
-	// Calculate color brightness according to https://www.w3.org/TR/AERT/#color-contrast
 	$brightness: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
 
 	@if ($brightness >= 156) {
@@ -55,11 +51,9 @@
 	$theme-white: mix($white, $theme, 80%);
 	$theme-black: mix($black, $theme, 80%);
 
-	// Allow 'light' or 'dark' to $color
 	@if ($color == 'light') { $color: mix($white, $theme, 0%); }
 	@if ($color == 'dark') 	{ $color: mix($black, $theme, 0%); }
 
-	// Calculate color brightness according to https://www.w3.org/TR/AERT/#color-contrast
 	$brightness: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
 
 	@if ($brightness >= 156) {
@@ -144,7 +138,6 @@
 	@if ($state == 'selected') { @return rgba(on($color), 0.1); }
 }
 
-// Basic colors
 $primary:                               theme(color);
 $drop_target_color:                     $orange-dark;
 $indicator:                             if($variant == 'dark', mix($primary, background(b), 0%), mix($primary, background(f), 0%));
@@ -168,13 +161,12 @@ $titlebar:                              if($variant == 'light', background(a), b
 $titlebar-backdrop:                     if($variant == 'light', background(a), background(f));
 $titlebar-indicator:                    if($topbar  == 'dark', 	background(b), background(e));
 $popover:                               if($variant == 'light', background(a), background(g));
-$panel-solid:                           if($topbar  == 'dark', 	background(f), background(d)); // for Unity panel which doesn't allow translucent colors
+$panel-solid:                           if($topbar  == 'dark', 	background(f), background(d));
 $panel:                                 rgba($panel-solid, $panel_opacity);
 
 $button:                                if($variant == 'dark', on($background, secondary-fill), on($background, fill));
 $entry:                                 if($variant == 'dark', on($background, secondary-fill), on($background, fill));
 
-// Misc colors
 $chromium-tabs:                         if($variant == 'light', $grey-150, $grey-600);
 
 $link:                                  mix($blue-dark, $teal-dark, 50%);
@@ -193,9 +185,8 @@ $frame:                                 if($variant == 'light', rgba($black, 0.1
 $border:                                if($variant == 'light', rgba($black, 0.12), rgba($white, 0.12));
 $window-border:                         if($variant == 'light', rgba($black, 0.12), rgba($black, 0.75));
 $solid-border:                          if($variant == 'light', mix(black, $base, 12%), mix(white, $base, 12%));
-$border-alt:                            rgba($black, 0.16); // darker border color for Chrome and Firefox
+$border-alt:                            rgba($black, 0.16);
 
-// Overlay state colors
 $overlay-normal:                        gtkalpha(currentColor, 0.05);
 $overlay-hover:                         gtkalpha(currentColor, 0.08);
 $overlay-focus:                         gtkalpha(currentColor, 0.08);
@@ -204,7 +195,6 @@ $overlay-active:                        gtkalpha(currentColor, 0.12);
 $overlay-checked:                       gtkalpha(currentColor, 0.10);
 $overlay-selected:                      gtkalpha(currentColor, 0.06);
 
-// Text and derivative colors
 $text:                                  on($background);
 $text-secondary:                        on($background, secondary);
 $text-disabled:                         on($background, disabled);
@@ -233,12 +223,10 @@ $panel-divider:                         on($panel, divider);
 $panel-fill:                            on($panel, fill);
 
 
-// Titlebutton colors
 $titlebutton-close:                      $button-close;
 $titlebutton-max:                        $button-max;
 $titlebutton-min:                        $button-min;
 
 $accent-color:                          if($variant == 'light', $default-light, $default-dark);
 
-// workaround for GTK3 @placeholder_text_color which doesn't allow translucent colors
 $placeholder_text_color:                if($variant == 'light', mix($black, $base, percentage(0.6)), mix($white, $base, percentage(0.7)));

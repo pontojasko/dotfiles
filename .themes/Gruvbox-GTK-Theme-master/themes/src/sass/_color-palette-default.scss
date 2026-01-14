@@ -1,38 +1,28 @@
-// Gruvbox Default Theme Color Palette
 
-// Red
 $red-light: #c14a4a;
 $red-dark: #ea6962;
 
-// Pink
 $pink-light: #b16286;
 $pink-dark: #d3869b;
 
-// Purple
 $purple-light: #ab62b1;
 $purple-dark: #d386cd;
 
-// Blue
 $blue-light: #45707a;
 $blue-dark: #7daea3;
 
-// Teal
 $teal-light: #4c7a5d;
 $teal-dark: #89b482;
 
-// Green
 $green-light: #6c782e;
 $green-dark: #a9b665;
 
-// Yellow
 $yellow-light: #b47109;
 $yellow-dark: #d8a657;
 
-// Orange
 $orange-light: #c35e0a;
 $orange-dark: #e78a4e;
 
-// Grey
 $grey-050: #f9f5d7;
 $grey-100: #fbf1c7;
 $grey-150: #ebdbb2;
@@ -53,17 +43,13 @@ $grey-850: #141617;
 $grey-900: #0f0e0e;
 $grey-950: #0d0907;
 
-// White
 $white: #fbf1c7;
 
-// Black
 $black: #1d2021;
 
-// Theme
 $default-light: $blue-light;
 $default-dark: $blue-dark;
 
-// Button
 $button-close: if($topbar == 'light', #c14a4a, #ea6962);
 $button-max: if($topbar == 'light', #6c782e, #a9b665);
 $button-min: if($topbar == 'light', #c35e0a, #e78a4e);
