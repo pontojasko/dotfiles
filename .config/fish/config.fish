@@ -30,3 +30,7 @@ set -gx GEMINI_API_KEY "AIzaSyCYeJzdCoLbWZwLWLP1-aCNOYI7KTmUD0s"
 set -gx MODS_DEFAULT_MODEL "gemini-1.5-flash"
 set -gx MODS_DEFAULT_API "google"
 set -gx EDITOR nano set -gx VISUAL nano
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
