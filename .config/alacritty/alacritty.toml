@@ -42,8 +42,8 @@ instance = "Alacritty"
 [window.padding]
 # 'decorations' e 'dynamic_padding' foram movidos para a seção [window] acima.
 # Apenas o preenchimento (padding) deve ficar aqui.
-x = 15
-y = 15
+# x = 15
+# y = 15
 
 # =================================================================
 # Seção [colors] (Cores)
