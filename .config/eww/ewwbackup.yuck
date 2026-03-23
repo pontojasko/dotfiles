@@ -1,0 +1,98 @@
+;; VariÃ¡veis que serÃ£o atualizadas
+(defpoll music_info :interval "1s"
+  "scripts/music-info.sh")
+
+(defpoll album_art :interval "2s"
+  "scripts/album-art.sh")
+
+(defpoll player_status :interval "1s"
+  "playerctl status 2>/dev/null || echo 'Paused'")
+
+(defpoll position :interval "500ms"
+  :run-while {! is_seeking}
+  "playerctl position 2>/dev/null || echo '0'")
+
+(defpoll duration :interval "1s"
+  "playerctl metadata mpris:length 2>/dev/null | awk '{print $1/1000000}' || echo '0'")
+
+(defpoll volume :interval "1s"
+  "playerctl volume 2>/dev/null | awk '{printf \"%.0f\", $1 * 100}' || echo '50'")
+
+;; VariÃ¡vel para controlar se estÃ¡ arrastando
+(defvar is_seeking false)
+(defvar seek_position 0)
+
+;; Janela do player
+(defwindow music_player
+  :monitor 0
+  :geometry (geometry
+    :x "10px"
+    :y "10px"
+    :anchor "bottom center")
+  :stacking "overlay"
+  :windowtype "normal"
+  :wm-ignore false
+
+  (box :class "player-container"
+       :orientation "v"
+       :space-evenly false
+
+    ;; Capa do Ã¡lbum
+    (box :class "album-art-container"
+         :style "background-image: url('${album_art}');")
+
+    ;; InformaÃ§Ãµes da mÃºsica
+    (box :class "music-info"
+         :orientation "v"
+         :space-evenly false
+      (label :class "song-title"
+             :text "${music_info.title}"
+             :limit-width 35)
+      (label :class "song-artist"
+             :text "${music_info.artist}"
+             :limit-width 35))
+
+    ;; Barra de progresso
+    (box :class "progress-container"
+         :orientation "v"
+         :space-evenly false
+      (scale :class "progress-bar"
+             :value {is_seeking ? seek_position : position}
+             :min 0
+             :max duration
+             :onchange "eww update seek_position={}"
+             :onclick "eww update is_seeking=true"
+             :onrelease "eww update is_seeking=false && playerctl position {}")
+      (box :class "time-labels"
+           :space-evenly true
+        (label :class "time-current"
+               :text "${round(is_seeking ? seek_position : position, 0)} s"
+               :halign "start")
+        (label :class "time-total"
+               :text "${round(duration, 0)} s"
+               :halign "end")))
+
+    ;; Controles
+    (box :class "controls"
+     :space-evenly true
+     :halign "center"
+     (button :class "control-btn"
+             :onclick "playerctl previous"
+             "") ; Ícone FA de 'Previous' (<-)
+     (button :class "control-btn play-pause"
+             :onclick "playerctl play-pause"
+             "${player_status == 'Playing' ? '' : ''}") ; 'Pause' () ou 'Play' ()
+     (button :class "control-btn"
+             :onclick "playerctl next"
+             "")) ; Ícone FA de 'Next' (->)
+
+    ;; Volume
+    (box :class "volume-container"
+         :space-evenly false
+      (label :class "volume-icon"
+             :text "")
+      (scale :class "volume-bar"
+             :value volume
+             :min 0
+             :max 100
+             :onchange "playerctl volume $(echo {}/100 | bc -l)")))  )

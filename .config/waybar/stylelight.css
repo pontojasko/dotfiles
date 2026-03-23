@@ -1,0 +1,150 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 8px;
+    min-height: 0;
+}
+
+window#waybar {
+    /* Fundo Claro: bg (#fbf1c7) */
+    background-color: #cfc29e;
+    /* Texto Principal Escuro: fg (#5f5541) */
+    color: #3c3836;
+}
+
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    background-color: transparent;
+    /* Cor do Workspace Inativo: fg4 (#7c6f64) */
+    color: #5f5541;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.active {
+    /* Cor do Workspace Ativo: fg (#3c3836) */
+    color: #5f5541;
+    /* Cor de Destaque (aqua escuro: #427b58) */
+    border-bottom: 2px solid #427b58; 
+}
+
+#workspaces button:hover {
+    /* Fundo de Hover: bg1 (#ebdbb2) */
+    background-color: rgba(235, 219, 178, 0.8);
+    /* Cor do Texto de Hover: fg (#3c3836) */
+    color: #5f5541;
+}
+
+/* Módulos com padding padrão e cor de texto secundário */
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#battery,
+#custom-lyrics {
+    padding: 0 10px;
+    /* Cor do Texto Secundário: fg4 (#7c6f64) */
+    color: #5f5541;
+    background-color: transparent;
+}
+
+
+#cpu {
+    /* Cor do Texto Secundário: fg4 (#7c6f64) */
+    color: #5f5541;
+    padding-right: 0px
+}
+
+#custom-dnd {
+    padding-right: 5px
+}
+
+#memory {
+    /* Cor do Texto Secundário: fg4 (#7c6f64) */
+    color: #5f5541;
+}
+
+#pulseaudio {
+    /* Cor do Texto Secundário: fg4 (#7c6f64) */
+    color: #5f5541;
+}
+
+#pulseaudio:hover {
+    /* Fundo de Hover: bg1 (#ebdbb2) */
+    background-color: rgba(235, 219, 178, 0.8);
+}
+
+#custom-brightness {
+    /* Cor do Texto Secundário: fg4 (##5f5541) */
+    color: #5f5541;
+}
+
+#custom-brightness:hover {
+    /* Fundo de Hover: bg1 (#ebdbb2) */
+    background-color: rgba(235, 219, 178, 0.8);
+}
+
+
+#battery {
+    /* Cor do Texto Secundário: fg4 (#7c6f64) */
+    color: #5f5541;
+}
+
+#battery.warning {
+    /* Cor de Aviso: yellow escuro (#b57614) ou mantido */
+    color: #b57614; 
+}
+
+#battery.critical {
+    /* Cor Crítica: red escuro (#9d0006) ou mantido */
+    color: #9d0006;
+}
+
+/* Estilo do relógio */
+#clock {
+    margin-bottom: -1px; 
+    font-weight: 500;
+    /* Cor do Texto Secundário: fg4 (#7c6f64) */
+    color: #5f5541;
+
+}
+
+/* Novo Bloco: Estilo do módulo de Letras (Visível quando a música está tocando) */
+/* Novo Bloco: Estilo do módulo de Letras (Visível quando a música está tocando) */
+#custom-lyrics {
+    /* Cor do Texto Principal: fg (#3c3836) */
+    color: #5f5541;
+    
+    /* --- AJUSTE AQUI --- */
+    /* Opção A (mais simples): Reduz o espaço inferior para levantar o texto */
+    /* Teste valores como -1px ou -2px */
+    margin-bottom: -1px; 
+    
+    /* Opção B (mais precisa): Move o elemento diretamente para cima */
+    /* transform: translateY(-1px); */
+    
+    /* Nota: Se usou padding-top nos outros módulos, remova-o do bloco comum.
+     * Caso contrário, ajuste este valor até que fique alinhado. */
+}
+
+/* Estilo para o módulo de letras quando estiver PAUSADO */
+#custom-lyrics.paused {
+    /* Cor do Texto Secundário: fg4 (#7c6f64) */
+    color: #5f5541;
+
+    /* Opcional: define uma cor de fundo para destaque */
+    /* background-color: rgba(235, 219, 178, 0.5); */
+}
+
+
+#image#album-art {
+    margin-top: 0px;
+    margin-bottom: 3px; 
+    padding: 0px;
+    border-radius: 0;
+}

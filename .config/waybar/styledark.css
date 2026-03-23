@@ -1,0 +1,134 @@
+* {
+border: none;
+border-radius: 0;
+font-family: "CaskaydiaCove Nerd Font Mono", "Fira Code", monospace;
+/*jetbrains mono*/
+font-size: 8px;
+min-height: 0;
+}
+
+window#waybar {
+  background-color: rgba(30, 30, 30, 0.85);
+  color: #c0c0c0;
+}
+
+#workspaces {
+margin: 0;
+padding: 0;
+}
+
+#workspaces button {
+padding: 0 8px;
+background-color: transparent;
+color: #747474;
+border-bottom: 2px solid transparent;
+}
+
+#workspaces button.active {
+color: #ffffff;
+border-bottom: 2px solid #38441b;
+}
+
+#workspaces button:hover {
+background-color: rgba(255, 255, 255, 0.05);
+color: #ffffff;
+}
+
+/* Modificação aqui: Adicionei #custom-lyrics para aplicar o padding padrão */
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#battery,
+#custom-lyrics {
+
+padding: 0 10px;
+color: #c0c0c0;
+background-color: transparent;
+}
+
+
+
+#cpu {
+color: #a0a0a0;
+padding-right: 0px
+}
+
+#custom-dnd {
+  padding-right: 5px
+}
+
+#memory {
+color: #a0a0a0;
+}
+
+#pulseaudio {
+color: #b0b0b0;
+}
+
+#pulseaudio:hover {
+background-color: rgba(255, 255, 255, 0.05);
+}
+
+#custom-brightness {
+color: #b0b0b0;
+}
+
+#custom-brightness:hover {
+background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+#battery {
+color: #b0b0b0;
+}
+
+#battery.warning {
+color: #f0ad4e;
+}
+
+#battery.critical {
+color: #d9534f;
+}
+
+/* Estilo do relógio (Visível quando a música está parada/pausada) */
+#clock {
+font-weight: 500;
+color: #b0b0b0;
+    margin-bottom: -1px; 
+}
+
+/* Novo Bloco: Estilo do módulo de Letras (Visível quando a música está tocando) */
+#custom-lyrics {
+ /* Mesma fonte do relógio para transição suave */
+color: #ffffff;
+margin-bottom: -1px; 
+    
+}
+
+/* Estilo para o módulo de letras quando estiver PAUSADO */
+#custom-lyrics.paused {
+/* Define a cor do texto para laranja, por exemplo */
+color: #b0b0b0;
+
+/* Opcional: define uma cor de fundo para destaque */
+/*background-color: rgba(255, 152, 0, 0.2); */
+
+}
+
+
+#image#album-art {
+/* O valor 3px de margin-top geralmente alinha imagens pequenas (12px)
+ *      com texto de 8px em uma Waybar de 20px de altura. */
+margin-top: 0px;
+margin-bottom: 3px; /* (3 + 12 + 5 = 20px) */
+
+/* Para garantir que não haja padding extra desnecessário */
+padding: 0px;
+
+/* Espaçamento entre a capa e o texto */
+
+
+/* Deixe a capa com as bordas quadradas para combinar com o texto */
+border-radius: 0;
+}
