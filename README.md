@@ -1,45 +1,102 @@
-# Hyprland Configuration Tutorial
+# my borin gruv hyprland dots
 
-This tutorial covers the configuration of Hyprland, a modern window manager for Wayland. Below, we will go through each feature, its purpose, and how to configure it effectively.
+<div style="background-color: #232136; border-left: 5px solid rgb(111, 142, 235); padding: 1em; margin-bottom: 1em; color: #e0def4;">
+  <p>i realized that making my own dotfiles is easier . so i made it </p>
+  
+  <p>a lazy fork from <a href="https://github.com/husamuel/hyprland-configs">husamuel</a></p>
+</div>
 
-## Getting Started
-To start using Hyprland, you need to have it installed on your system. You can find installation instructions on the official [Hyprland website](https://hyprland.org).
+![Screenshot](https://i.postimg.cc/BSqPMd70/screenshot-2025-11-25-16-46-45.png)
 
-## Configuration File Locations
-Hyprland uses a main configuration file located at `~/.config/hypr/hyprland.conf`. You can modify this file to customize your environment.
+## features
 
-## Features
-### 1. Window Management
-Hyprland allows for dynamic tiling of windows. You can configure how windows behave with the following settings:
-- **tile**: Align windows to occupy the entire screen.
-- **float**: Allow some windows to float over others.
+- hyper-minimal waybar  
+- happy background  
+- productive keybindings and workspace setup
+- fonts: inter variable & caskaydiacove
 
-### 2. Keybindings
-Custom keybindings are crucial for efficient workflow. Here are some examples:
-```plaintext
-bind = $mod+Enter, exec, alacritty
-bind = $mod+1, switchto, 1
+---
+
+## installation
+
+1. **clone this repository**:
+
+```bash
+git clone https://github.com/pontojasko/dotfiles.git
+cd dotfiles
 ```
-Modify these bindings to suit your preferences.
+2. **copy the configuration files to your home directory**:
+```bash
 
-### 3. Status Bar
-Hyprland comes with a customizable status bar. You can configure the appearance and the information shown:
-- **style**: Choose light or dark mode.
-- **display**: Show time, date, battery status.
+cp -r .config/* ~/.config/
 
-### 4. Workspace Management
-Workspaces in Hyprland can be customized to your liking:  
-- **name**: Set workspace names for easier navigation.
-- **layout**: Choose layouts according to your workflow.
+```
+3. **install required programs:**
 
-### 5. Auto-start Applications
-You can specify applications to start automatically with your session:  
-```plaintext
-autostart = alacritty
-autostart = chromium
+core: hyprland, waybar, dunst, wofi, swww, hypridle
+
+tools: grim & slurp (screenshots), wl-clipboard, cliphist, brightnessctl, ddcutil, playerctl
+
+apps: alacritty, dolphin, brave
+
+```bash
+sudo pacman -S --needed hyprland hypridle waybar dunst wofi grim slurp wl-clipboard cliphist brightnessctl playerctl alacritty dolphin brave 
+# You might need AUR helpers (yay/paru) for: swww, bibata-cursor-theme
+
 ```
 
-## Conclusion
-With this tutorial, you should have a strong foundation for configuring Hyprland to meet your needs. Experiment with different settings to create the perfect environment for your productivity! 
+4. **start hyprland:**
 
-For further information, visit [Hyprland GitHub](https://github.com/Hyprland/hyprland).
+```bash
+hyprland
+```
+
+## how to use
+
+here are the main shortcuts and commands from the hyprland configuration:
+
+### terminal & applications
+- `$mainmod + return` → open terminal (alacritty)  
+- `$mainmod + d` → open application launcher (wofi)  
+- `$mainmod + b` → open browser (vivaldi)  
+- `$mainmod + o` → open obsidian  
+- `$mainmod + m` → open email (thunderbird)  
+- `$mainmod + e` → open file manager (thunar)  
+
+### window management
+- `$mainmod + h / l / k / j` → move focus (vim-style)  
+- `$mainmod + shift + h / l / k / j` → move active window  
+- `$mainmod + ctrl + h / l / k / j` → resize active window  
+
+### workspace management
+- `$mainmod + [1-0]` → switch workspace  
+- `$mainmod + shift + [1-0]` → move window to workspace  
+- `$mainmod + left / right` → switch workspace left/right  
+- `$mainmod + mouse up / down` → scroll through workspaces  
+
+### special workspaces
+- `$mainmod + s` → toggle special workspace “magic”  
+- `$mainmod + shift + s` → move window to special workspace  
+
+### floating & pseudo-tiling
+- `$mainmod + v` → toggle floating  
+- `$mainmod + p` → toggle pseudo-tiling  
+- `$mainmod + j` → toggle split orientation  
+
+### screenshots
+- `print` → full screenshot  
+- `shift + print` → area screenshot  
+- `$mainmod + print` → window screenshot  
+
+### media & brightness
+- `$mainmod + f11 / f10` → volume up / down  
+- `$mainmod + shift + = / -` → brightness up / down  
+
+### lock screen
+- `$mainmod + escape` → lock screen (swaylock with custom theme)  
+
+---
+
+## 📜 license
+
+this project is licensed under the mit license - see the [license](license) file for details.
