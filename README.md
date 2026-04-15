@@ -1,12 +1,86 @@
-# boring gruv dots
+# my boring gruv dots
 
 i realized that making my own dotfiles is easier . so i made it
 
-started as a lazy fork from [husamuel](https://github.com/husamuel/hyprland-configs) but at this point barely anything from the original remains. rebuilt most of it from scratch — the eww widgets, the waybar, the theme system, the scripts.
+started as a lazy fork from [husamuel](https://github.com/husamuel/hyprland-configs) but at this point barely anything from the original remains. rebuilt most of it from scratch: the eww widgets, the waybar, the theme system and the scripts.
 
-![Screenshot](https://i.postimg.cc/BSqPMd70/screenshot-2025-11-25-16-46-45.png)
+<p align="center">
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8440413b-ffc4-4ad4-977e-bd3535f508bd" />
+<img width="600" height="1200" alt="image" src="https://github.com/user-attachments/assets/e1fe0ce8-c5b4-4926-b640-1cad51985b06" />
+
+</p>
 
 ---
+
+## installation
+
+### 1. clone
+
+```bash
+git clone https://github.com/pontojasko/dotfiles.git
+cd dotfiles
+```
+
+### 2. backup
+
+```bash
+cp -r ~/.config ~/.config.backup
+```
+
+### 3. copy
+
+```bash
+cp -r .config/* ~/.config/
+cp -r .themes ~/.themes
+cp -r .icons ~/.icons
+cp -r .local ~/.local
+```
+
+### 4. dependencies (arch)
+
+```bash
+# core
+sudo pacman -S --needed hyprland hyprpaper hypridle hyprlock waybar dunst rofi \
+  grim slurp wl-clipboard cliphist wtype brightnessctl playerctl ddcutil \
+  alacritty nemo fish starship zoxide fastfetch jq socat imagemagick tesseract wf-recorder
+
+# aur (yay/paru)
+yay -S eww spicetify-cli bibata-cursor-theme-bin \
+  ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd otf-libre-baskerville
+```
+
+### 5. install gtk theme
+
+```bash
+cd ~/.themes/Gruvbox-GTK-Theme-master/themes
+./install.sh -t green -c dark
+```
+
+### 6. shell
+
+```bash
+chsh -s $(which fish)
+# edit ~/.config/fish/config.fish — remove or replace the GEMINI_API_KEY line
+```
+
+### 7. eww
+
+```bash
+# eww daemon should auto-start, but to test:
+eww daemon &
+eww open spotify_control  # test the spotify widget
+eww close spotify_control
+```
+
+### 8. go
+
+```bash
+hyprland
+```
+
+---
+
 
 ## what's in here
 
@@ -189,74 +263,6 @@ super is the main modifier.
 | `super + m` | exit hyprland |
 | `super + ctrl + w` | reload waybar |
 | `super + v` | clipboard history |
-
----
-
-## installation
-
-### 1. clone
-
-```bash
-git clone https://github.com/pontojasko/dotfiles.git
-cd dotfiles
-```
-
-### 2. backup
-
-```bash
-cp -r ~/.config ~/.config.backup
-```
-
-### 3. copy
-
-```bash
-cp -r .config/* ~/.config/
-cp -r .themes ~/.themes
-cp -r .icons ~/.icons
-cp -r .local ~/.local
-```
-
-### 4. dependencies (arch)
-
-```bash
-# core
-sudo pacman -S --needed hyprland hyprpaper hypridle hyprlock waybar dunst rofi \
-  grim slurp wl-clipboard cliphist wtype brightnessctl playerctl ddcutil \
-  alacritty nemo fish starship zoxide fastfetch jq socat imagemagick tesseract wf-recorder
-
-# aur (yay/paru)
-yay -S eww spicetify-cli bibata-cursor-theme-bin \
-  ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd otf-libre-baskerville
-```
-
-### 5. install gtk theme
-
-```bash
-cd ~/.themes/Gruvbox-GTK-Theme-master/themes
-./install.sh -t green -c dark
-```
-
-### 6. shell
-
-```bash
-chsh -s $(which fish)
-# edit ~/.config/fish/config.fish — remove or replace the GEMINI_API_KEY line
-```
-
-### 7. eww
-
-```bash
-# eww daemon should auto-start, but to test:
-eww daemon &
-eww open spotify_control  # test the spotify widget
-eww close spotify_control
-```
-
-### 8. go
-
-```bash
-hyprland
-```
 
 ---
 
