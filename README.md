@@ -7,7 +7,7 @@ started as a lazy fork from [husamuel](https://github.com/husamuel/hyprland-conf
 <p align="center">
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8440413b-ffc4-4ad4-977e-bd3535f508bd" />
-<img width="600" height="1200" alt="image" src="https://github.com/user-attachments/assets/e1fe0ce8-c5b4-4926-b640-1cad51985b06" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/e1fe0ce8-c5b4-4926-b640-1cad51985b06" />
 
 </p>
 
