@@ -1,6 +1,5 @@
 #! /usr/bin/env bash
 
-# Check command availability
 function has_command() {
 	command -v $1 >/dev/null
 }
