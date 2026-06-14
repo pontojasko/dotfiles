@@ -34,3 +34,5 @@ set -gx EDITOR nano set -gx VISUAL nano
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+alias nam='~/nam-juce/build/NEURAL_AMP_MODELER_artefacts/Release/Standalone/Neural\ Amp\ Modeler'
